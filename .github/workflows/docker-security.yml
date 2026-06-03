@@ -37,7 +37,7 @@ jobs:
           severity: CRITICAL,HIGH,MEDIUM
 
       - name: Upload config scan results
-        uses: github/codeql-action/upload-sarif@bc0b696b4103f5fe60f15749af68a046868d511a # codeql-bundle-v2.25.4
+        uses: github/codeql-action/upload-sarif@8ed7f7c384ef65d96d422e33fe592d3572522558 # codeql-bundle-v2.25.4
         if: always()
         with:
           sarif_file: trivy-config.sarif
@@ -70,10 +70,10 @@ jobs:
         run: npm ci && npm run build
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4.0.0
+        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
 
       - name: Build image (local, no push)
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
         with:
           context: .
           file: docker/dockerfile
@@ -109,7 +109,7 @@ jobs:
           scanners: vuln
 
       - name: Upload image scan results
-        uses: github/codeql-action/upload-sarif@bc0b696b4103f5fe60f15749af68a046868d511a # codeql-bundle-v2.25.4
+        uses: github/codeql-action/upload-sarif@8ed7f7c384ef65d96d422e33fe592d3572522558 # codeql-bundle-v2.25.4
         if: always()
         with:
           sarif_file: trivy-image.sarif
